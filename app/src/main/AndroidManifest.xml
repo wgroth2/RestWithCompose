@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.RestWithCompose"
+        tools:targetApi="31">
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:theme="@style/Theme.RestWithCompose">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <!-- Declaration for ResultsActivity -->
+        <activity
+            android:name=".ResultsActivity"
+            android:label="Minimal Results Screen"
+            android:exported="false">
+            <!--
+                android:exported="false":
+                This is generally recommended for activities that are only launched
+                from within your own app. If you needed to launch this Activity
+                from another app, you would set this to "true" and potentially
+                add <intent-filter> elements.
+
+                android:label:
+                This is the title that might appear in the system UI (e.g., recent tasks)
+                for this activity. You can change it or reference a string resource.
+            -->
+        </activity>
+        <!-- VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV -->
+        <!-- Entry for SettingsActivityCompose (Jetpack Compose)              -->
+        <!-- VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV -->
+        <activity
+            android:name=".SettingsActivity"
+            android:label="@string/action_settings"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/Theme.RestWithCompose">
+        <!--
+            For Compose, if your Activity provides its own TopAppBar within its
+            Compose UI (using Scaffold), you often use a base NoActionBar theme
+            for the activity itself (e.g., Theme.Material3.DayNight.NoActionBar
+            or a derivative of it). If Theme.RestWithCompose is already such
+            a theme, you can reuse it.
+        -->
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value=".MainActivity" />
+        </activity>
+    </application>
+
+</manifest>
